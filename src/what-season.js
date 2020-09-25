@@ -3,8 +3,8 @@ const CustomError = require("../extensions/custom-error");
 module.exports = function getSeason(date) {
   // throw new CustomError('Not implemented');
   if (date == null) return 'Unable to determine the time of year!';
-  if ( (typeof date === 'object') || (date instanceof Date) || (date != undefined)) {
-    if ((typeof date.getMonth() !== 'number') || Array.isArray(date)) {
+  if ( (typeof date === 'object') ||  (date != undefined)) {
+    if ((isNaN(date.valueOf()) && date instanceof Date)) {
       throw new Error('Error');
     }
 
