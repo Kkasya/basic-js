@@ -3,8 +3,9 @@ const CustomError = require("../extensions/custom-error");
 module.exports = function getSeason(date) {
   // throw new CustomError('Not implemented');
   if (date == null) return 'Unable to determine the time of year!';
-  if ( (typeof date === 'object') || (date instanceof Date) || (date != undefined)) {
-    if ((typeof date.getMonth() !== 'number') || Array.isArray(date)) return  'THROWN';
+  if ( (typeof date === 'object') || (date instanceof Date) || (date != undefined) || (typeof date.getMonth() !== 'number') || Array.isArray(date)) {
+      throw new Error('Error');
+    };
 
     let mon = date.getMonth();
     if (mon === 0 || mon === 1 || mon === 11) return 'winter';
